@@ -16,6 +16,7 @@ close all
 cd(filepath)
 run ./../set_filepaths
 
+addpath(genpath(toolboxpath))
 %% INPUT: PATH TO FILE AND FILE:
 %       make sure this is set correctly before you attempt to run the script!
   
@@ -27,16 +28,18 @@ files = dir('*.nc');
 
 for ii = 1:length(files)
  
+    file =  files(ii).name;
+    
+ % GETTING INFORMATION ABOUT THE FILE, INCLUDING PARAMETER NAMES ETC, AND
+ %  STORING IT IN THE STRUCTURE "fileinfo".
+ fileinfo = ncinfo(file);
+ 
+    
     radio(ii).station_name = fileinfo(1).Attributes(8).Value;
     radio(ii).lat          = fileinfo(1).Attributes(10).Value.*100;
     radio(ii).lon          = fileinfo(1).Attributes(11).Value.*100;
     
-    fileinfo(1).Attributes(8).Value
-    
- % GETTING INFORMATION ABOUT THE FILE, INCLUDING PARAMETER NAMES ETC, AND
- %  STORING IT IN THE STRUCTURE "fileinfo".
- fileinfo = ncinfo(files(ii).name);
-
+  
 % Reading time in the data file
  tm = ncread(file,'time');
 
