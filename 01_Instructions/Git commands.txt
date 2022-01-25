@@ -1,5 +1,6 @@
 git status : current status		//use this often!
 git clone https://github.com/richard-hann/AGF-350-850		//clones the git on your computer
+git pull		//pull latest files from the online GitHub
 git add <file>		//Adds a file to a "commit-bucket"
 git commit -m "<text>"		// defines a commit bucket with a message. use good descriptors
 git diff		//difference between the commit and what is main
