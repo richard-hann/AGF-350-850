@@ -24,7 +24,7 @@ staticfieldspath=AROME_ARCTIC_path;
 
 
 %% INPUT Retrieve 2.5 km data (1) or 500 m data (2)
-select_resolution = 1;
+select_resolution = 2;
 
 %% INPUT Setting for what type of files to retrieve
 % note, if selecting historical forecast, remember to define the start-time and end-times below
@@ -36,9 +36,9 @@ LATEST       = 0;  % Choose whether to retrieve historical forecast (0) or lates
     % Normally, only one is selecteed at a time
 NEARSURFACE     = 0;  % Choose whether to retrieve near-surface data (1) or not (0)
 PROFILES        = 0;  % Choose whether to retrieve profile data (1) or not (0)
-HORIZONTAL2D    = 0;  % Choose whether to retrieve horizontal 2D data (1) or not (0)
+HORIZONTAL2D    = 1;  % Choose whether to retrieve horizontal 2D data (1) or not (0)
 CROSSECTION     = 0;  % Choose whether to retrieve cross-section data (1) or not (0)
-PRESSURE_LEVELS = 1;  % Choose whether to retrieve pressure level data (1) or not (0)
+PRESSURE_LEVELS = 0;  % Choose whether to retrieve pressure level data (1) or not (0)
 
 % List of pressure levels, 2.5km:
 % plevels = ncread('https://thredds.met.no/thredds/dodsC/aromearcticlatest/arome_arctic_extracted_2_5km_latest.nc','pressure');
@@ -67,8 +67,8 @@ int_y        = 1;
 
 if LATEST == 0
     % Define start- and end-points in time for retrieving the historical data
-        starttime = datenum([2021 09 07 12 00 00]); % READ DATA FROM THIS TIME (yyyy mm dd HH MM SS)
-        endtime   = datenum([2021 09 07 18 00 00]); % READ DATA UNTIL THIS TIME (yyyy mm dd HH MM SS)
+        starttime = datenum([2022 02 07 21 00 00]); % READ DATA FROM THIS TIME (yyyy mm dd HH MM SS)
+        endtime   = datenum([2022 02 07 21 00 00]); % READ DATA UNTIL THIS TIME (yyyy mm dd HH MM SS)
         timevec   = starttime:int_f/24:endtime;
 end
 
@@ -190,9 +190,11 @@ else % THEN HISTORICAL (ARCHIVED FILES)
                 end
             elseif select_resolution == 2
                 if PRESSURE_LEVELS == 0
-                    fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/AGF-DCCCL/AS500_' datestr(kk,'yyyymmddHH') '.nc'];
+%                     fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/AGF-DCCCL/AS500_' datestr(kk,'yyyymmddHH') '.nc'];
+                    fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/UNIS-2022/AS500_' datestr(kk,'yyyymmddHH') '.nc'];
                 elseif PRESSURE_LEVELS == 1
-                    fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/AGF-DCCCL/AS500_' datestr(kk,'yyyymmddHH') '_fp.nc'];
+%                     fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/AGF-DCCCL/AS500_' datestr(kk,'yyyymmddHH') '_fp.nc'];
+                    fileurls{i} = ['https://thredds.met.no/thredds/dodsC/metusers/yuriib/UNIS-2022/AS500_' datestr(kk,'yyyymmddHH') '_fp.nc'];
                 end
             end
     end
