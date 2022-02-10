@@ -8,7 +8,7 @@ close all
 
 
 %% INPUT: BEFORE RUNNING SCRIPT, MAKE SURE THAT THE PATH TO THE DATA IS CORRECT IN THE FILE set_filepaths.m
-
+%% MAKE SURE TO SET PATH FOR DRONE FLIGHTS OR TRANSSECTS
 
 [filepath,~,~] = fileparts(mfilename('fullpath'));
 cd(filepath)
@@ -17,8 +17,9 @@ run ./../set_filepaths
 
 addpath(genpath(toolboxpath))
 
-% cd(iMET_drones_path)
-cd(iMET_transects_path)
+%% CHOOSE IF DRONE OR TRANSSECT
+cd(iMET_drones_path)
+%cd(iMET_transects_path)
 
   
 gn = 1;
@@ -127,6 +128,6 @@ disp(['--- Done reading files from iMet ---'])
 disp(['------------------------------------'])
 
 
-
+clearvars -except imet common_data_folder filepath iMET_drones_path toolboxpath
 
 
