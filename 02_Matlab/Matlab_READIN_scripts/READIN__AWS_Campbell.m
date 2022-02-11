@@ -18,12 +18,15 @@ run ./../set_filepaths
 
 addpath(genpath(toolboxpath))
 
-% select which of the Campbell stations to read data from here:
+%% SELECT FOLDER TO THE CAMPBELL STATION
 cd(AWS_Campbell_1_path)
 % cd(AWS_Campbell_2_path)
 
+%% SELECT FILE
+secdata_10 = load('Campbell_AWS_1_10sec_ALLDATA.dat');  %10s data
+secdata_1 = load('Campbell_AWS_1_1sec_ALLDATA.dat');    %1s data
 
-
+%% SET MEASUREMENT TIME
 start_time = datetime(datevec('08-Sep-2021 10:00:00'));
 end_time   = datetime(datevec('14-Sep-2021 20:00:00'));
 
@@ -85,7 +88,7 @@ secdata_10 = load('Campbell_AWS_1_10sec_ALLDATA.dat');
              clear table5*
               
               
-secdata_1 = load('Campbell_AWS_1_1sec_ALLDATA.dat');
+
         timenWSWD = datenum(secdata_1(:,1), secdata_1(:,2), secdata_1(:,3), secdata_1(:,4), secdata_1(:,5), secdata_1(:,6)); % time vector
         WS1 = secdata_1(:,9);
         WD1 = secdata_1(:,10);
