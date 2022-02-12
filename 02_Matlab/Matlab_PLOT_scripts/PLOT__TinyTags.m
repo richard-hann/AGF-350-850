@@ -1,5 +1,8 @@
 
+%% ===== USE THIS FOR PLOTTING SINGEL TINY TAGS TYPE TT IN A FIGURE =====
 
+
+%% select the tiny tags that you want to read in 
 ttnames = {'TT1'};
 % ttnames = {'TT2','TT11','TT11'};
 
@@ -14,7 +17,10 @@ for i = 1:length(ttnames)
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T_black)
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T_white)
     legend('T 1','T 2')
+
+    %% SELECT TEMPERATUER LIMITS
     ylim([-20 20])
+
     set(gca,'xtick',xticks)
     datetick('x','keepticks')
 end
@@ -25,8 +31,8 @@ set(gcf,'position',[100 100 1500 600])
 
 
 
-%%
-
+%% ===== USE THIS FOR PLOTTING SINGEL TINY TAGS TYPE CEB IN A FIGURE =====
+%% select the tiny tags that you want to read in 
 ttnames = {'CEB1'};
 
 close all
@@ -39,7 +45,10 @@ for i = 1:length(ttnames)
     hold on
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T)
     legend('T')
+
+    %% SELECT TEMPERATURE LIMITS
     ylim([-20 20])
+
     set(gca,'xtick',xticks)
     datetick('x','keepticks')
 end
@@ -49,8 +58,8 @@ set(gcf,'position',[100 100 1500 600])
 
 
 
-%%
-
+%% ===== USE THIS FOR PLOTTING SINGEL TINY TAGS TYPE TH IN A FIGURE =====
+%% select the tiny tags that you want to read in 
 ttnames = {'TH1'};
 
 close all
@@ -66,7 +75,10 @@ for i = 1:length(ttnames)
     hold on
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T)
     legend('T')
+
+    %% SELECT TEMPERATURE LIMITS
     ylim([-20 20])
+
 %     set(gca,'xtick',xticks)
     datetick('x','keepticks')
     
@@ -85,8 +97,9 @@ set(gcf,'position',[100 100 1500 600])
 
 
 
-%% PLOTTING MULTIPLE TTs
+%% ===== USE THIS FOR PLOTTING MULTIPLE TINY TAGS TYPE TT IN A FIGURE =====
 
+%% select the tiny tags that you want to read in 
 % % ttnames = {'TT2','TT7','TT9','TT5','TT4','TT8','TT11','TT10','TT6','TT12'};
 % ttnames = {'TT2','TT13','TT11'};
 % 
@@ -103,9 +116,12 @@ set(gcf,'position',[100 100 1500 600])
 %     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T_black)
 % %     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T_white)
 % %     legend('T 1','T 2')
-%     ylim([0 15])
+
+%       %% SELECT LIMITS
+%       ylim([-20 20])
+
 % %     set(gca,'xtick',xticks)
-%     datetick('x','keepticks')
+%       datetick('x','keepticks')
 %     
 %     legend(ttnames)
 % end
