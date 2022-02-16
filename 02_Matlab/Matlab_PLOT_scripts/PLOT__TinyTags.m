@@ -18,11 +18,11 @@ for i = 1:length(ttnames)
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T_white)
     legend('T 1','T 2')
 
-    %% SELECT TEMPERATUER LIMITS
-    ylim([-20 20])
+    % SELECT TEMPERATURE LIMITS
+    ylim([-30 25])
 
     set(gca,'xtick',xticks)
-    datetick('x','keepticks')
+    datetick('x','dd','keeplimits','keepticks')
 end
 
 set(findobj(gcf,'type','axes'),'FontName','Calibri','FontSize',9,'FontWeight','Bold','LineWidth',1,'layer','top','box','on');
@@ -46,11 +46,11 @@ for i = 1:length(ttnames)
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T)
     legend('T')
 
-    %% SELECT TEMPERATURE LIMITS
-    ylim([-20 20])
+    % SELECT TEMPERATURE LIMITS
+    ylim([-30 25])
 
     set(gca,'xtick',xticks)
-    datetick('x','keepticks')
+    datetick('x','dd','keeplimits','keepticks')
 end
 
 set(findobj(gcf,'type','axes'),'FontName','Calibri','FontSize',9,'FontWeight','Bold','LineWidth',1,'layer','top','box','on');
@@ -76,11 +76,11 @@ for i = 1:length(ttnames)
     plot(TinyTag(1).(char(ttnames{i})).time,TinyTag(1).(char(ttnames{i})).T)
     legend('T')
 
-    %% SELECT TEMPERATURE LIMITS
-    ylim([-20 20])
+    % SELECT TEMPERATURE LIMITS
+    ylim([-30 25])
 
 %     set(gca,'xtick',xticks)
-    datetick('x','keepticks')
+    datetick('x','dd','keeplimits')
     
     subplot(1,2,2)
 %     xticks = TinyTag(1).(char(ttnames{i})).time(1):1:TinyTag(1).(char(ttnames{i})).time(end); 
@@ -89,7 +89,7 @@ for i = 1:length(ttnames)
     legend('RH')
     ylim([0 100])
 %     set(gca,'xtick',xticks)
-    datetick('x','keepticks')
+    datetick('x','dd','keeplimits')
 end
 
 set(findobj(gcf,'type','axes'),'FontName','Calibri','FontSize',9,'FontWeight','Bold','LineWidth',1,'layer','top','box','on');
