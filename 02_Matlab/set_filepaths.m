@@ -10,8 +10,8 @@
 
 
 % COMMON DATA FOLDER WHERE ALL DATA ARE STORED:
-common_data_folder = '/media/marius/Data2/OneDrive/UNIS_COURSES/AGF_350_850/2022/SHARED_FOLDER/STUDENTS_READ_ONLY/Fieldwork/DATA/TEST_DATA/';
-% common_data_folder = '/media/marius/Data2/OneDrive/UNIS_COURSES/AGF_350_850/2022/SHARED_FOLDER/STUDENTS_READ_ONLY/Fieldwork/DATA/2022_DATA/';
+% common_data_folder = '/media/marius/Data2/OneDrive/UNIS_COURSES/AGF_350_850/2022/SHARED_FOLDER/STUDENTS_READ_ONLY/Fieldwork/DATA/TEST_DATA/';
+common_data_folder = '/media/marius/Data2/OneDrive/UNIS_COURSES/AGF_350_850/2022/SHARED_FOLDER/STUDENTS_READ_ONLY/Fieldwork/DATA/2022_DATA/';
 
 %Toolbox path
 toolboxpath ='/mnt/Data/Google Drive/UNIS_COURSES/AGF_350_850/2022/MATLAB/Matlab_toolboxes/';
@@ -24,8 +24,8 @@ toolboxpath ='/mnt/Data/Google Drive/UNIS_COURSES/AGF_350_850/2022/MATLAB/Matlab
     TinyTags_path                     = [common_data_folder '/TINYTAGS/'];
 
 %Radiometers
-    Radiometer_Temporary_1_path       = [common_data_folder '/RADIOMETERS/Radiation_Temporary_1/'];           % this radiometer does not have a memory card
-    Radiometer_Temporary_2_path       = [common_data_folder '/RADIOMETERS/Radiation_Temporary_2/'];           % this radiometer does have a memory card
+    Radiometer_Temporary_1_path       = [common_data_folder '/RADIOMETERS/Radiation_Temporary_Endalen/'];           % this radiometer does not have a memory card
+    Radiometer_Temporary_2_path       = [common_data_folder '/RADIOMETERS/Radiation_Temporary_marine/'];           % this radiometer does have a memory card
 
 %Tethersonde
     Tethersonde_path                  = [common_data_folder '/TETHERSONDE/'];
@@ -38,12 +38,8 @@ toolboxpath ='/mnt/Data/Google Drive/UNIS_COURSES/AGF_350_850/2022/MATLAB/Matlab
     Radiosondes_met_norway_path       = [common_data_folder '/RADIOSONDES/MET_Norway/'];
     
 %AWS_Campbell
-    AWS_Campbell_1_path               = [common_data_folder '/AWS/AWS_Campbell_1/PROCESSED_DATA'];
-    AWS_Campbell_2_path               = [common_data_folder '/AWS/AWS_Campbell_2/PROCESSED_DATA'];
-    
-%AWS_Hobo
-    AWS_Hobo_1_path                   = [common_data_folder '/AWS/AWS_HOBO_1/'];
-    AWS_Hobo_2_path                   = [common_data_folder '/AWS/AWS_HOBO_2/'];
+    AWS_Campbell_marine_path          = [common_data_folder '/AWS/AWS_Campbell_marine/PROCESSED_DATA'];
+    AWS_Campbell_endalen_path         = [common_data_folder '/AWS/AWS_Campbell_endalen/PROCESSED_DATA'];
     
 %AROME ARCTIC
     AROME_ARCTIC_path                 = [common_data_folder '/AROME_ARCTIC/'];  
