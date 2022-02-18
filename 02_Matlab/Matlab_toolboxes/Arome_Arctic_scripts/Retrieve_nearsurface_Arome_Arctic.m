@@ -25,7 +25,7 @@ for j=1:length(fileurls) % Looping over data files
         catch % if not, then insert NaNs
             qr=1;
             disp(['WARNING, file ' char(fileurl) ' is missing']);
-            displ('Inserting NaN for missing data')
+            disp('Inserting NaN for missing data')
         end
      
           if qr == 0 % if file exists, then read data
