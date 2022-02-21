@@ -24,7 +24,7 @@ staticfieldspath=AROME_ARCTIC_path;
 
 
 %% INPUT Retrieve 2.5 km data (1) or 500 m data (2)
-select_resolution = 2;
+select_resolution = 1;
 
 %% INPUT Setting for what type of files to retrieve
 % note, if selecting historical forecast, remember to define the start-time and end-times below
@@ -50,10 +50,10 @@ p_lvl_int   = [1];  % this is the interval between each pressure level
 
 %% INPUT Settings for what time stamps to retrieve
 start_h      = 1; % Start time index in each data file
-num_h        = 7; % Number of data-points (hours) to retrieve from each data file
+num_h        = 24; % Number of data-points (hours) to retrieve from each data file
 % num_h        = 24;  % Number of data-points (hours) to retrieve from each data file
 int_h        = 1; % Time interval between data points in each data file
-int_f        = 7; % Time interval in hours between each data file if retrieving historical data. Only relevant for historical data. This is typically the same as num_h.
+int_f        = 24; % Time interval in hours between each data file if retrieving historical data. Only relevant for historical data. This is typically the same as num_h.
 
 
 %%
@@ -67,8 +67,8 @@ int_y        = 1;
 
 if LATEST == 0
     % Define start- and end-points in time for retrieving the historical data
-        starttime = datenum([2022 02 07 21 00 00]); % READ DATA FROM THIS TIME (yyyy mm dd HH MM SS)
-        endtime   = datenum([2022 02 07 21 00 00]); % READ DATA UNTIL THIS TIME (yyyy mm dd HH MM SS)
+        starttime = datenum([2022 02 08 00 00 00]); % READ DATA FROM THIS TIME (yyyy mm dd HH MM SS)
+        endtime   = datenum([2022 02 10 00 00 00]); % READ DATA UNTIL THIS TIME (yyyy mm dd HH MM SS)
         timevec   = starttime:int_f/24:endtime;
 end
 
@@ -126,6 +126,13 @@ if HORIZONTAL2D == 1
 %     % Define corresponding variable names for Matlab structure
 %         fldnames = {'u10r','v10r','PSFC','T2','RH2','cc','prec','SHF'};
         
+
+% %     % Names as given in the netcdf files on the MET server
+%         varnames = {'x_wind_10m','y_wind_10m','integral_of_surface_downward_sensible_heat_flux_wrt_time','integral_of_surface_downward_latent_heat_flux_wrt_time'};
+% %     % Define corresponding variable names for Matlab structure
+%         fldnames = {'u10r','v10r','SHF','LHF'};
+
+
     % Names as given in the netcdf files on the MET server
         varnames = {'x_wind_10m','y_wind_10m','air_temperature_2m'};
     % Define corresponding variable names for Matlab structure
