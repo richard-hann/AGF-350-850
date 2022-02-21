@@ -21,11 +21,13 @@ cd(TinyTags_path)
 
 
 % LIST OF NAMES OF TINYTAGS 
-ttnames = {'CEB1','TT1','TH1'};
+% ttnames = {'CEB1','TT1','TH1'};
 % ttnames = {'CEB1','TT1'};
 % ttnames = {'TH6'};
 % ttnames = {'TH2'};
 % ttnames = {'CEB2'};
+% ttnames = {'TT14','TT17'};
+ttnames = {'TT2','TT12','TT4','TT7','TT8','TT3','TT13'};
 
 % ttnames = {'TT2','TT7','TT9','TT5','TT4','TT8','TT11','TT10','TT6','TT12'};
 % ttnames = {'TT2','TT11','TT13'};
