@@ -9,6 +9,8 @@
 d1 = '2022-02-06T00:00:00';
 d2 = '2022-02-14T00:00:00';
 
+
+
 %% Retrieving data from UNIS stations:
 
     % Gruvefjellet
