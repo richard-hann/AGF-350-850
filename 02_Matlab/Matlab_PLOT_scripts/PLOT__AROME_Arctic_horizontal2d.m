@@ -5,11 +5,11 @@ clc
 
 close all
 % Choose time step(s)
-ids = 1; 
+ids = 40; 
 
 % Parameter list
-varr = {'T2','TP2','WS10','Q2','RH2','PSFC','MSLP','cc','prec','SHF'};
-cbartitle = {'\circC','\circC','m s^{-1}','g kg^{-1}','%','hPa','hPa','%','mm','W m^{-2}'};
+varr = {'T2','TP2','WS10','Q2','RH2','PSFC','MSLP','cc','prec','SHF','LHF'};
+cbartitle = {'\circC','\circC','m s^{-1}','g kg^{-1}','%','hPa','hPa','%','mm','W m^{-2}','W m^{-2}'};
 
 
     clim(1).WS10    = [0 20];
@@ -17,18 +17,20 @@ cbartitle = {'\circC','\circC','m s^{-1}','g kg^{-1}','%','hPa','hPa','%','mm','
     clim(1).Q2      = [0 5];
     clim(1).T2      = [-14 0];
     clim(1).prec    = [0.5 15];
-    clim(1).SHF     = [-700 700];
+    clim(1).SHF     = [-300 300];
+    clim(1).LHF     = [-300 300];
     
     cint(1).WS10    = 1;
     cint(1).RH2     = 5;
     cint(1).Q2      = 0.5;
     cint(1).T2      = 1;
     cint(1).prec    = 0.5;
-    cint(1).SHF     = 20;
+    cint(1).SHF     = 10;
+    cint(1).LHF     = 10;
     
     
 % Choose which parameter should be drawn
-vid = 3; % parameter number from the list in "varr" above, for plotting
+vid = 11; % parameter number from the list in "varr" above, for plotting
 
 % Draw wind barbs (1) or not (0)
 drawwindbarb = 0;
@@ -131,8 +133,8 @@ m_proj('lambert','long',lonlims,'lat',latlims);
 for id = ids
     
     
-    if vid == 10
-        varn = (AROME(1).(varr{vid})(xi,yi,id) - AROME(1).(varr{vid})(xi,yi,id-1)); 
+    if vid == 10 || vid == 11
+        varn = ((AROME(1).(varr{vid})(xi,yi,id) - AROME(1).(varr{vid})(xi,yi,id-1)))./3600; % 3600s, given a one hour time interval
     else
         varn = AROME(1).(varr{vid})(xi,yi,id);
     end
@@ -207,7 +209,9 @@ end
         RGB=cmocean('deep');
         colormap(gca,RGB(1:end-90,:))
     elseif strcmp(varr{vid},'SHF') 
-        cmocean('thermal')
+        cmocean('balance')
+    elseif strcmp(varr{vid},'LHF') 
+        cmocean('balance')
     elseif strcmp(varr{vid},'prec')    
         cmap = cptcmap('precip_11lev.cpt','ncol',length(linspace(t1,t2,15)));
             colormap(gca,cmap(1:end,:))
