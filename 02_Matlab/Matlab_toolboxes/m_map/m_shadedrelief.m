@@ -14,11 +14,16 @@ function  [Truecol,x,y]=m_shadedrelief(x,y,Z,varargin)
 %  displaying a true-colour image so it MUST be preceded by COLORMAP and 
 %  CAXIS calls.  
 %
-%  (2) M_SHADEDRELIEF probably is most useful as a backdrop to maps with
+%  (2) Gradients have to be calculated, so Z should be a data-type accepted
+%   by Matlab's GRADIENT function (currently double and single). 
+%   If Z is (e.g.) 'int8', or some other data-type you must use
+%   M_SHADED_RELIEF(X,Y,double(Z))
+%
+%  (3) M_SHADEDRELIEF probably is most useful as a backdrop to maps with
 %  a rectangular outline box - either a cylindrical projection, or some
 %  other projection with M_PROJ(...'rectbox','on'). 
 %
-%  (3) Finally, the simplest way of not running into problems:
+%  (4) Finally, the simplest way of not running into problems:
 %     - if your elevation data is in LAT/LON coords (i.e. in a matrix where
 %       each row has points with the same latitude, and each column has points
 %       with the same longitude), use 
@@ -81,6 +86,8 @@ function  [Truecol,x,y]=m_shadedrelief(x,y,Z,varargin)
 %            local to AXES not to FIGURE.
 % Apr/2019 - some parts relied on the ones-expansion; went back to meshgrid
 %            for compatibility with older matlab versions (thanks P. Grahn)
+% Oct/2020 - added info about how input Z must be a double
+
 
 global MAP_PROJECTION MAP_VAR_LIST
 
@@ -153,8 +160,8 @@ if strcmp(geocoords,'geog')                           %  If its Lat/Long points
     end
  
     % Convert to X/Y
-    [X,Y]=m_ll2xy(x(1,:),repmat(mean(y(:,1)),1,size(x,2)));
-    [X2,Y2]=m_ll2xy(repmat(mean(x(1,:)),size(y,1),1),y(:,1));
+    [X,Y]=m_ll2xy(x(1,:),repmat(mean(y(:,1)),1,size(x,2)),'clip','off');
+    [X2,Y2]=m_ll2xy(repmat(mean(x(1,:)),size(y,1),1),y(:,1),'clip','off');
     x=X;
     y=Y2;
    
@@ -201,6 +208,9 @@ lcc=size(cc,1);
 % Get slopes 
 % If we are using a normal ellipsoid we need to rescale 
 % x/y to get true slope angles
+if ~isfloat(Z)
+    warning('Your input Z matrix must be floating point');
+end
 if  (strcmp(geocoords,'map') || strcmp(geocoords,'geog')) && strcmp(MAP_VAR_LIST.ellipsoid,'normal')
    scfac=6370997;  
    [Fx,Fy]=gradient( Z, x*scfac, y*scfac);

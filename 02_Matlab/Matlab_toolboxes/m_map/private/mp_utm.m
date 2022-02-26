@@ -20,6 +20,7 @@ function  [X,Y,vals,labI]=mp_utm(optn,varargin)
 
 % 10/Dec/98 - PL added various ellipsoids.
 % 17/May/12 - clarified hemisphere setting
+% 11/Feb/20 - transcription error in grs67 flattening fixed (thanks G. Etienne)  
 
 global MAP_PROJECTION MAP_VAR_LIST
 
@@ -30,7 +31,7 @@ global MAP_PROJECTION MAP_VAR_LIST
 MAP_ELLIP = struct ( 'normal', [1.0, 0], ...
     'sphere', [6370997.0, 0], ...
     'grs80' , [6378137.0, 1/298.257], ...
-    'grs67' , [6378160.0, 1/247.247], ...
+    'grs67' , [6378160.0, 1/298.247], ...
     'wgs84' , [6378137.0, 1/298.257], ...
     'wgs72' , [6378135.0, 1/298.260], ...
     'wgs66' , [6378145.0, 1/298.250], ...
@@ -83,16 +84,16 @@ switch optn
     MAP_VAR_LIST.ulats = [40 44];
     MAP_VAR_LIST.zone = 0;		% will be computed if not there
     MAP_VAR_LIST.hemisphere = -1;
-    MAP_VAR_LIST.ellipsoid = 'normal';
+    MAP_VAR_LIST.ellipsoid = 'wgs84';
     MAP_VAR_LIST.rectbox='off';
     k=2;
 
     while k<length(varargin) 
       switch varargin{k}(1:3)
 	case 'lon'
-	  MAP_VAR_LIST.ulongs=varargin{k+1};
+	  MAP_VAR_LIST.ulongs=varargin{k+1}(:)';
 	case 'lat'
-	  MAP_VAR_LIST.ulats=varargin{k+1};
+	  MAP_VAR_LIST.ulats=varargin{k+1}(:)';
 	case 'zon'
 	  MAP_VAR_LIST.zone=varargin{k+1};
 	case 'hem'

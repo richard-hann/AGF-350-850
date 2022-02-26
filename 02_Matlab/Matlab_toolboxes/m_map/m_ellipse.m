@@ -1,6 +1,6 @@
 function [h,varargout]=m_ellipse(long,lat,fmaj,fmin,finc,fpha,scl,tpe,varargin)
 % M_ELLIPSE Draws ellipses on a map.
-%      [H]=M_ELLIPSE(LONG,LAT,MAJOR,MINOR,INC,PHA,SCALE,TYPE)
+%      [H]=M_ELLIPSE(LONG,LAT,MAJOR,MINOR,INC,PHA,SCALE,TYPE,VARARGIN)
 %      draws ellipses as patch objects or lines on a map created 
 %      by the M_Map package.
 %
@@ -11,7 +11,9 @@ function [h,varargout]=m_ellipse(long,lat,fmaj,fmin,finc,fpha,scl,tpe,varargin)
 %      INC:       ellipse inclination (degrees CCW of East)
 %      PHA:       phase in degrees (useful for tidal ellipses)
 %                 set to [] when not needed (will also omit phase lines)
-%      SCALE:     scale factor (set to [] for default scale)
+%      SCALE:     scale factor (set to [] for default scale, which is
+%                 3000 per degree of latitude). Setting SCALE to be
+%                 2 will mean 3000/2 per degree of latitude.
 %      TYPE:      'patch' or 'line'
 %      VARARGIN   options passed to the patch or line objects
 %       
